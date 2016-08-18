@@ -1,0 +1,8 @@
+{% load thumbnail %}
+<div class="col-md-4 col-sm-6">
+    <div class="center">
+        <img src="{% thumbnail service_item.image 150x68 %}" alt="{{ service_item.title }}">
+        <h4>{{ service_item.title }}</h4>
+        <p>{{ service_item.content }}</p>
+    </div>
+</div>

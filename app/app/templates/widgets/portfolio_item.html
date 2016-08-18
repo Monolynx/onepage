@@ -1,0 +1,12 @@
+{% load thumbnail %}
+<li class="portfolio-item {% for category in portfolio_item.categories.all %}{{ category }} {% endfor %}">
+    <div class="item-inner">
+        <div class="portfolio-image">
+            <img src="{% thumbnail portfolio_item.image 235x159 %}" alt="{{ portfolio_item.title }}">
+            <div class="overlay">
+                <a class="preview btn btn-danger" title="{{ portfolio_item.content }}" href="{% thumbnail portfolio_item.image 1175x795 %}"><i class="icon-eye-open"></i></a>
+            </div>
+        </div>
+        <h5>{{ portfolio_item.title }}</h5>
+    </div>
+</li>

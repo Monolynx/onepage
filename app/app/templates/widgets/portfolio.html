@@ -1,0 +1,22 @@
+{% load cms_tags i18n %}
+<div class="container">
+    <div class="box">
+        {% if section.show_title_on_section %}
+        <div class="center gap">
+            <h2>{{ section.title }}</h2>
+            <p class="lead">{{ section.content|safe }}</p>
+        </div><!--/.center-->
+        {% endif %}
+        <ul class="portfolio-filter">
+            <li><a class="btn btn-primary active" href="#" data-filter="*">{% trans 'All' %}</a></li>
+            {% for category in categories %}
+            <li><a class="btn btn-primary" href="#" data-filter=".{{ category }}">{{ category }}</a></li>
+            {% endfor %}
+        </ul><!--/#portfolio-filter-->
+        <ul class="portfolio-items col-4">
+            {% for plugin in portfolio.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
+        </ul>
+    </div><!--/.box-->
+</div><!--/.container-->
