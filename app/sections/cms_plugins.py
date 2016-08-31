@@ -18,22 +18,13 @@ class SectionPlugin(WidgetPluginBase):
     name = _('Section')
     code = 'section'
     allow_children = True
-    child_classes = ['ServicePlugin', 'PortfolioPlugin']
+    child_classes = ['ServiceItemPlugin', 'PortfolioItemPlugin']
     render_template = 'widgets/section.html'
 
+    def get_render_template(self, context, instance, placeholder):
+        return instance.template
+
 plugin_pool.register_plugin(SectionPlugin)
-
-
-class ServicePlugin(WidgetPluginBase):
-    name = _('Service Section')
-    code = 'service'
-    require_parent = True
-    parent_classes = ['SectionPlugin']
-    allow_children = True
-    child_classes = ['ServiceItemPlugin']
-    render_template = 'widgets/service.html'
-
-plugin_pool.register_plugin(ServicePlugin)
 
 
 class ServiceItemPlugin(WidgetPluginBase):
@@ -41,28 +32,10 @@ class ServiceItemPlugin(WidgetPluginBase):
     name = _('Service Item')
     code = 'service_item'
     require_parent = True
-    parent_classes = ['ServicePlugin']
+    parent_classes = ['SectionPlugin']
     render_template = 'widgets/service_item.html'
 
 plugin_pool.register_plugin(ServiceItemPlugin)
-
-
-class PortfolioPlugin(WidgetPluginBase):
-    model = Portfolio
-    name = _('Portfolio Section')
-    code = 'portfolio'
-    require_parent = True
-    parent_classes = ['SectionPlugin']
-    allow_children = True
-    child_classes = ['PortfolioItemPlugin']
-    render_template = 'widgets/portfolio.html'
-
-    def render(self, context, instance, placeholder):
-        context = super(PortfolioPlugin, self).render(context, instance, placeholder)
-        context['categories'] = PortfolioCategory.objects.order_by('title')
-        return context
-
-plugin_pool.register_plugin(PortfolioPlugin)
 
 
 class PortfolioItemPlugin(WidgetPluginBase):
@@ -70,7 +43,7 @@ class PortfolioItemPlugin(WidgetPluginBase):
     name = _('Portfolio Item')
     code = 'portfolio_item'
     require_parent = True
-    parent_classes = ['PortfolioPlugin']
+    parent_classes = ['SectionPlugin']
     render_template = 'widgets/portfolio_item.html'
     filter_horizontal = ('categories',)
 

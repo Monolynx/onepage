@@ -68,9 +68,9 @@ project.db
 .idea
 
 # Settings
-app/local.py
-app/settings_local.py
-app/local_settings.py
+app/app/local.py
+app/app/settings_local.py
+app/app/local_settings.py
 
 media
 # wsgi.py
@@ -81,4 +81,3 @@ static
 
 # Mac trash
 .DS_Store
-

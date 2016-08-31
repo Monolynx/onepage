@@ -193,6 +193,11 @@ MIGRATION_MODULES = {
 
 }
 
+SECTIONS_TEMPLATES = (
+    ('widgets/service.html', 'Service'),
+    ('widgets/portfolio.html', 'Portfolio'),
+)
+
 try:
     from app.settings_local import *  # NOQA
 except ImportError:

@@ -1,6 +1,5 @@
 {% load cms_tags %}
 <section id="{{ section.slug }}">
-{% for plugin in section.child_plugin_instances %}
-    {% render_plugin plugin %}
-{% endfor %}
+{% block content %}
+{% endblock content %}
 </section>

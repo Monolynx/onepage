@@ -1,17 +1,20 @@
+{% extends 'widgets/section.html' %}
 {% load cms_tags %}
-<div class="container">
-    <div class="box first">
-        {% if section.show_title_on_section %}
-        <div class="center gap">
-            <h2>{{ section.title }}</h2>
-            <p class="lead">{{ section.content|safe }}</p>
-        </div><!--/.center-->
-        {% endif %}
-        <div class="row">
-            {% for plugin in service.child_plugin_instances %}
-                {% render_plugin plugin %}
-            {% endfor %}
+
+{% block content %}
+    <div class="container">
+        <div class="box first">
+            {% if section.show_title_on_section %}
+            <div class="center gap">
+                <h2>{{ section.title }}</h2>
+                <p class="lead">{{ section.content|safe }}</p>
+            </div><!--/.center-->
+            {% endif %}
+            <div class="row">
+                {% for plugin in section.child_plugin_instances %}
+                    {% render_plugin plugin %}
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
-
+{% endblock content %}

@@ -4,6 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 from djangocms_text_ckeditor.fields import HTMLField
 from filer.fields.image import FilerImageField
 
+from app import settings
+
 
 class WidgetAbstract(CMSPlugin):
 
@@ -18,6 +20,7 @@ class Section(WidgetAbstract):
     title = models.CharField(_('Title'), max_length=63, null=False, blank=False)
     slug = models.SlugField(max_length=63)
     content = models.TextField(null=True, blank=True)
+    template = models.CharField(max_length=1023, null=True, blank=True, choices=settings.SECTIONS_TEMPLATES)
     show_on_menu = models.BooleanField(_('Show on menu'), null=False, blank=False, default=True)
     show_title_on_section = models.BooleanField(_('Show title on section'), null=False, blank=False, default=True)
     active = models.BooleanField(_('Active'), null=False, blank=False, default=True)
