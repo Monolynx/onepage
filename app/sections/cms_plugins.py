@@ -1,7 +1,7 @@
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
-from sections.models import Section, Service, Portfolio, PortfolioItem, PortfolioCategory
+from sections.models import Section, Service, Portfolio, Slider
 
 
 class WidgetPluginBase(CMSPluginBase):
@@ -18,11 +18,11 @@ class SectionPlugin(WidgetPluginBase):
     name = _('Section')
     code = 'section'
     allow_children = True
-    child_classes = ['ServiceItemPlugin', 'PortfolioItemPlugin']
+    child_classes = ['ServiceItemPlugin', 'PortfolioItemPlugin', 'SliderItemPlugin']
     render_template = 'widgets/section.html'
 
     def get_render_template(self, context, instance, placeholder):
-        return instance.template
+        return instance.template or self.render_template
 
 plugin_pool.register_plugin(SectionPlugin)
 
@@ -39,7 +39,7 @@ plugin_pool.register_plugin(ServiceItemPlugin)
 
 
 class PortfolioItemPlugin(WidgetPluginBase):
-    model = PortfolioItem
+    model = Portfolio
     name = _('Portfolio Item')
     code = 'portfolio_item'
     require_parent = True
@@ -48,3 +48,14 @@ class PortfolioItemPlugin(WidgetPluginBase):
     filter_horizontal = ('categories',)
 
 plugin_pool.register_plugin(PortfolioItemPlugin)
+
+
+class SliderItemPlugin(WidgetPluginBase):
+    model = Slider
+    name = _('Slider Item')
+    code = 'slider_item'
+    require_parent = True
+    parent_classes = ['SectionPlugin']
+    render_template = 'widgets/slider_item.html'
+
+plugin_pool.register_plugin(SliderItemPlugin)

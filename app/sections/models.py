@@ -16,6 +16,18 @@ class WidgetAbstract(CMSPlugin):
         abstract = True
 
 
+class BaseAbstract(WidgetAbstract):
+    title = models.CharField(_('Title'), max_length=31, null=False, blank=False)
+    content = models.CharField(_('Content'), max_length=1023, null=False, blank=False)
+    image = FilerImageField(null=False, default='')
+
+    def __str__(self):
+        return u'{0}'.format(self.title)
+
+    class Meta:
+        abstract = True
+
+
 class Section(WidgetAbstract):
     title = models.CharField(_('Title'), max_length=63, null=False, blank=False)
     slug = models.SlugField(max_length=63)
@@ -33,22 +45,11 @@ class Section(WidgetAbstract):
         verbose_name_plural = _('Sections')
 
 
-class Service(WidgetAbstract):
-    title = models.CharField(_('Title'), max_length=31, null=False, blank=False)
-    content = models.CharField(_('Content'), max_length=1023, null=False, blank=False)
-    image = FilerImageField(null=False)
-
-    def __str__(self):
-        return u'{0}'.format(self.title)
+class Service(BaseAbstract):
 
     class Meta:
         verbose_name = _('Service')
         verbose_name_plural = _('Services')
-
-
-class Portfolio(WidgetAbstract):
-    title = models.CharField(_('Title'), max_length=255, null=False, blank=False, default='Portfolio')
-    content = HTMLField(_('Content'))
 
 
 class PortfolioCategory(models.Model):
@@ -62,11 +63,19 @@ class PortfolioCategory(models.Model):
         verbose_name_plural = _('Portfolio Categories')
 
 
-class PortfolioItem(WidgetAbstract):
-    image = FilerImageField(null=False)
-    title = models.CharField(_('Title'), max_length=255, null=False, blank=False)
-    content = models.TextField(_('Content'), null=False, blank=False)
+class Portfolio(BaseAbstract):
     categories = models.ManyToManyField(PortfolioCategory, verbose_name=_('Categories'), null=False, blank=False)
 
     def copy_relations(self, oldinstance):
         self.categories = oldinstance.categories.all()
+
+    class Meta:
+        verbose_name = _('Portfolio')
+        verbose_name_plural = _('Portfolios')
+
+
+class Slider(BaseAbstract):
+
+    class Meta:
+        verbose_name = _('Slider')
+        verbose_name_plural = _('Sliders')

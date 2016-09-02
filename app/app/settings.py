@@ -194,6 +194,7 @@ MIGRATION_MODULES = {
 }
 
 SECTIONS_TEMPLATES = (
+    ('widgets/slider.html', 'Slider'),
     ('widgets/service.html', 'Service'),
     ('widgets/portfolio.html', 'Portfolio'),
 )
