@@ -1,4 +1,5 @@
 import os
+from django.utils.translation import ugettext_lazy as _
 
 gettext = lambda s: s
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -187,16 +188,28 @@ THUMBNAIL_PROCESSORS = (
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'homepage_content': {
+        'name': _('Home Page'),
+        'plugins': ['TextPlugin', 'LinkPlugin', 'SectionPlugin', ],
+    }
+}
 
 MIGRATION_MODULES = {
 
 }
 
-SECTIONS_TEMPLATES = (
-    ('widgets/slider.html', 'Slider'),
+SECTION_TEMPLATES = (
     ('widgets/service.html', 'Service'),
+    ('widgets/slider.html', 'Slider'),
     ('widgets/portfolio.html', 'Portfolio'),
+    ('widgets/team.html', 'Team'),
+)
+
+SECTION_ITEM_TEMPLATES = (
+    ('widgets/service_item.html', 'Service Item'),
+    ('widgets/slider_item.html', 'Slider Item'),
+    ('widgets/team_item.html', 'Team Item'),
 )
 
 try:

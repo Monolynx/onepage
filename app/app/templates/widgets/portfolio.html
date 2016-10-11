@@ -1,5 +1,5 @@
 {% extends 'widgets/section.html' %}
-{% load cms_tags i18n %}
+{% load cms_tags i18n section_tags %}
 
 {% block content %}
     <div class="container">
@@ -12,9 +12,7 @@
             {% endif %}
             <ul class="portfolio-filter">
                 <li><a class="btn btn-primary active" href="#" data-filter="*">{% trans 'All' %}</a></li>
-                {% for category in categories %}
-                <li><a class="btn btn-primary" href="#" data-filter=".{{ category }}">{{ category }}</a></li>
-                {% endfor %}
+                {% portfolio_categories %}
             </ul><!--/#portfolio-filter-->
             <ul class="portfolio-items col-4">
                 {% for plugin in section.child_plugin_instances %}

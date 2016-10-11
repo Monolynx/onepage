@@ -1,0 +1,35 @@
+{% extends 'widgets/section.html' %}
+{% load cms_tags section_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="box">
+        {% if section.show_title_on_section %}
+        <div class="center gap">
+            <h2>{{ section.title }}</h2>
+            <p class="lead">{{ section.content|safe }}</p>
+        </div><!--/.center-->
+        {% endif %}
+        <div class="gap"></div>
+        <div id="team-scroller" class="carousel scale">
+            <div class="carousel-inner">
+                {% for chunk in section.child_plugin_instances|chunks:3 %}
+                <div class="item{% if forloop.first %} active{% endif %}">
+                    <div class="row">
+                        {% for plugin in chunk %}
+                            {{ plugin }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="left-arrow" href="#team-scroller" data-slide="prev">
+                <i class="icon-angle-left icon-4x"></i>
+            </a>
+            <a class="right-arrow" href="#team-scroller" data-slide="next">
+                <i class="icon-angle-right icon-4x"></i>
+            </a>
+        </div><!--/.carousel-->
+    </div><!--/.box-->
+</div><!--/.container-->
+{% endblock content %}

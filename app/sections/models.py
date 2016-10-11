@@ -1,7 +1,6 @@
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from djangocms_text_ckeditor.fields import HTMLField
 from filer.fields.image import FilerImageField
 
 from app import settings
@@ -32,7 +31,7 @@ class Section(WidgetAbstract):
     title = models.CharField(_('Title'), max_length=63, null=False, blank=False)
     slug = models.SlugField(max_length=63)
     content = models.TextField(null=True, blank=True)
-    template = models.CharField(max_length=1023, null=True, blank=True, choices=settings.SECTIONS_TEMPLATES)
+    template = models.CharField(max_length=1023, null=True, blank=True, choices=settings.SECTION_TEMPLATES)
     show_on_menu = models.BooleanField(_('Show on menu'), null=False, blank=False, default=True)
     show_title_on_section = models.BooleanField(_('Show title on section'), null=False, blank=False, default=True)
     active = models.BooleanField(_('Active'), null=False, blank=False, default=True)
@@ -45,11 +44,12 @@ class Section(WidgetAbstract):
         verbose_name_plural = _('Sections')
 
 
-class Service(BaseAbstract):
+class SectionItem(BaseAbstract):
+    template = models.CharField(max_length=1023, null=False, blank=False, choices=settings.SECTION_ITEM_TEMPLATES)
 
     class Meta:
-        verbose_name = _('Service')
-        verbose_name_plural = _('Services')
+        verbose_name = _('Section Item (title, content, image)')
+        verbose_name_plural = _('Section Items')
 
 
 class PortfolioCategory(models.Model):
@@ -72,10 +72,3 @@ class Portfolio(BaseAbstract):
     class Meta:
         verbose_name = _('Portfolio')
         verbose_name_plural = _('Portfolios')
-
-
-class Slider(BaseAbstract):
-
-    class Meta:
-        verbose_name = _('Slider')
-        verbose_name_plural = _('Sliders')

@@ -74,7 +74,6 @@ app/app/local_settings.py
 
 media
 # wsgi.py
-static
 
 # Vagrant
 .vagrant/
