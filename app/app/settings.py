@@ -119,6 +119,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.messages',
     'cms',
+    'cmsplugin_contact_plus',
     'easy_thumbnails',
     'filer',
     'menus',
@@ -188,18 +189,19 @@ THUMBNAIL_PROCESSORS = (
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {
-    'homepage_content': {
-        'name': _('Home Page'),
-        'plugins': ['TextPlugin', 'LinkPlugin', 'SectionPlugin', ],
-    }
-}
+#CMS_PLACEHOLDER_CONF = {
+#    'homepage_content': {
+#        'name': _('Home Page'),
+#        'plugins': ['TextPlugin', 'LinkPlugin', 'SectionPlugin', ],
+#    }
+#}
 
 MIGRATION_MODULES = {
 
 }
 
 SECTION_TEMPLATES = (
+    ('widgets/empty.html', 'Section (empty)'),
     ('widgets/service.html', 'Service'),
     ('widgets/slider.html', 'Slider'),
     ('widgets/portfolio.html', 'Portfolio'),

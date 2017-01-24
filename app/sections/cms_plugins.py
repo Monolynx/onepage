@@ -18,7 +18,7 @@ class SectionPlugin(WidgetPluginBase):
     name = _('Section')
     code = 'section'
     allow_children = True
-    child_classes = ['SectionItemPlugin', 'PortfolioItemPlugin']
+    child_classes = ['SectionItemPlugin', 'PortfolioItemPlugin', 'CMSContactPlusPlugin']
     render_template = 'widgets/section.html'
 
     def get_render_template(self, context, instance, placeholder):

@@ -11,9 +11,15 @@ jQuery(function($) {
 	var form = $('.contact-form');
 	form.submit(function () {
 		$this = $(this);
-		$.post($(this).attr('action'), function(data) {
-			$this.prev().text(data.message).fadeIn().delay(3000).fadeOut();
-		},'json');
+		$.post(
+		    $(this).attr('action'),
+		    $(this).serialize(),
+		    function(data) {
+                $this.prev().text(data.message).fadeIn().delay(3000).fadeOut();
+                $this.find('textarea#message').val('');
+            },
+            'json'
+        );
 		return false;
 	});
 

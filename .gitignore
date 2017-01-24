@@ -72,9 +72,9 @@ app/app/local.py
 app/app/settings_local.py
 app/app/local_settings.py
 
-media
+app/media
 # wsgi.py
-./app/static
+app/static
 
 # Vagrant
 .vagrant/

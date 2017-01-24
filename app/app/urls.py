@@ -7,6 +7,7 @@ from django.conf.urls import *  # NOQA
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from sections.views import contact
 
 admin.autodiscover()
 
@@ -15,6 +16,7 @@ urlpatterns = i18n_patterns('',
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
+    url(r'^contact_form', contact),
     url(r'^', include('cms.urls')),
 )
 
