@@ -1,0 +1,39 @@
+{% load section_tags menu_tags %}
+<header id="header" role="banner">
+    <div class="container">
+        <div id="navbar" class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                {% for child in children %}
+                    <li class="child{% if child.selected %} active{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
+                        <a href="{% if child.selected %}#main-slider{% else %}{{ child.attr.redirect_url|default:child.get_absolute_url }}{% endif %}">
+                        {% if forloop.first %}
+                            <i class="icon-home"></i>
+                        {% else %}
+                            {{ child.get_menu_title }}
+                        {% endif %}
+                        </a>
+                        {% if child.children %}
+                        <ul>
+                            {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% if forloop.first %}
+                        {% section_menu %}
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header><!--/#header-->

@@ -24,7 +24,7 @@ jQuery(function($) {
 	});
 
 	//smooth scroll
-	$('.navbar-nav > li').click(function(event) {
+	$('.navbar-nav > li:not(.child)').click(function(event) {
 		event.preventDefault();
 		var target = $(this).find('>a').prop('hash');
 		$('html, body').animate({
