@@ -17,7 +17,7 @@
                     <li class="child{% if child.selected %} active{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}">
                         <a href="{% if child.selected %}#main-slider{% else %}{{ child.attr.redirect_url|default:child.get_absolute_url }}{% endif %}">
                         {% if forloop.first %}
-                            <i class="icon-home"></i>
+                            <img src="{{ STATIC_URL }}images/monolynx.png" alt="Home">
                         {% else %}
                             {{ child.get_menu_title }}
                         {% endif %}

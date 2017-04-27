@@ -1,12 +1,14 @@
 {% load cms_tags i18n %}
-<section id="main-slider" class="carousel">
-    <div class="carousel-inner">
-        {% for plugin in section.child_plugin_instances %}
-            <div class="item{% if forloop.first %} active{% endif %}">
-                {% render_plugin plugin %}
-            </div>
-        {% endfor %}
-    </div><!--/.carousel-inner-->
-    <a class="prev" href="#main-slider" data-slide="prev"><i class="icon-angle-left"></i></a>
-    <a class="next" href="#main-slider" data-slide="next"><i class="icon-angle-right"></i></a>
+<section id="main-slider">
+
 </section><!--/#main-slider-->
+
+<script type="text/javascript">
+    $("#main-slider").vegas({
+        slides: [
+{% for plugin in section.child_plugin_instances %}
+            { src: "{% render_plugin plugin %}" }{% if not forloop.last %},{% endif %}
+{% endfor %}
+        ]
+    });
+</script>

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+/* @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700); */
 body {
   background: #e5e5e5;
   color: #999;
@@ -48,7 +48,7 @@ a:focus {
   z-index: 99999;
 }
 #main-slider {
-  background-image: url(../images/slider-bg.jpg);
+  background-image: url(../images/slider-1.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: 50% 50%;
@@ -460,7 +460,7 @@ a:focus {
 }
 .navbar-default {
   background: #fff;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0;
   border: 0;
   padding: 0;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.2);
@@ -472,20 +472,24 @@ a:focus {
   border-radius: 0 0 0 5px;
 }
 .navbar-default .navbar-brand {
-  margin-right: 50px;
+  margin-right: 20px;
   margin-left: 20px;
   width: 200px;
   height: 78px;
-  background: url(../images/logo.png) no-repeat 0 50%;
+  background: url(../images/logo.png) no-repeat 50%;
 }
 .navbar-default .navbar-nav > li {
   margin-left: 1px;
+  font-family: Bebas;
 }
 .navbar-default .navbar-nav > li > a {
   padding: 30px 25px;
   font-size: 16px;
   line-height: 18px;
-  color: #999;
+  color: #34495a;
+}
+.navbar-default .navbar-nav > li:first-child > a {
+  padding: 21px 25px;
 }
 .navbar-default .navbar-nav > li > a > i {
   display: inline-block;
@@ -500,9 +504,25 @@ a:focus {
 .navbar-default .navbar-nav > li.active:hover > a:focus,
 .navbar-default .navbar-nav > li:hover > a:focus,
 .navbar-default .navbar-nav > li:focus > a:focus {
-  background-color: #52b6ec;
+  background-color: #9f8f6f;
   color: #fff;
 }
+.navbar-default .navbar-nav > li > a > img {
+  filter: invert(.7);
+}
+.navbar-default .navbar-nav > li.active > a > img,
+.navbar-default .navbar-nav > li.active:focus > a > img,
+.navbar-default .navbar-nav > li.active:hover > a > img,
+.navbar-default .navbar-nav > li:hover > a > img,
+.navbar-default .navbar-nav > li:focus > a > img,
+.navbar-default .navbar-nav > li.active > a:focus > img,
+.navbar-default .navbar-nav > li.active:focus > a:focus > img,
+.navbar-default .navbar-nav > li.active:hover > a:focus > img,
+.navbar-default .navbar-nav > li:hover > a:focus > img,
+.navbar-default .navbar-nav > li:focus > a:focus > img {
+  filter: none;
+}
+
 .icon-lg {
   font-size: 48px;
   height: 108px;

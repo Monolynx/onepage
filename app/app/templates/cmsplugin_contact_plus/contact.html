@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-sm-6">
                 <h1>Contact Form</h1>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
                 <div class="status alert alert-success" style="display: none"></div>
                 <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="/contact_form" role="form">
                     {% csrf_token %}
@@ -35,6 +34,7 @@
                 </form>
             </div><!--/.col-sm-6-->
             <div class="col-sm-6">
+                {% comment %}
                 <h1>Our Address</h1>
                 <div class="row">
                     <div class="col-md-6">
@@ -71,6 +71,7 @@
                         </ul>
                     </div>
                 </div>
+                {% endcomment %}
             </div><!--/.col-sm-6-->
         </div><!--/.row-->
     </div><!--/.box-->
