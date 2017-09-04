@@ -81,7 +81,8 @@ TEMPLATES = [
                 'django.core.context_processors.tz',
                 'sekizai.context_processors.sekizai',
                 'django.core.context_processors.static',
-                'cms.context_processors.cms_settings'
+                'cms.context_processors.cms_settings',
+                'django.template.context_processors.request'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -110,6 +111,7 @@ MIDDLEWARE_CLASSES = [
 INSTALLED_APPS = [
     'djangocms_admin_style',
     'django_extensions',
+    'grappelli',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

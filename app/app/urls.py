@@ -13,6 +13,7 @@ from sections.views import contact
 admin.autodiscover()
 
 urlpatterns = i18n_patterns('',
+    url(r'^grappelli/', include('grappelli.urls')),  # NOQA
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'admin/login.html'}),
     url(r'^accounts/logout/$', auth_views.logout),
