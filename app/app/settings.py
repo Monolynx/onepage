@@ -204,6 +204,7 @@ SECTION_TEMPLATES = (
     ('widgets/empty.html', 'Section (empty)'),
     ('widgets/service.html', 'Service'),
     ('widgets/slider.html', 'Slider'),
+    ('widgets/pricing.html', 'Pricing'),
     ('widgets/portfolio.html', 'Portfolio'),
     ('widgets/team.html', 'Team'),
 )
